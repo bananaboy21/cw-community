@@ -79,7 +79,7 @@ async def ban(ctx, user: discord.Member = None):
 
 @bot.command()
 @commands.has_permissions(manage_messages = True)
-async def purge(ctx, number: int = None):
+async def purge(ctx, num: int = None):
 	try: 
 	    if num is None:
 	        await ctx.send("How many messages would you like me to delete? Usage: *purge [number of msgs]")
@@ -89,7 +89,7 @@ async def purge(ctx, number: int = None):
 	        except ValueError:
 	            return await ctx.send("The number is invalid. Make sure it is valid! Usage: *purge [number of msgs]")
 	        await ctx.channel.purge(limit=num+1)
-	        msg = await ctx.send(f"Done. Purged {number} messages.")
+	        msg = await ctx.send(f"Done. Purged {num} messages.")
 	        await asyncio.sleep(3)
 	        await msg.delete()
 	except discord.Forbidden:
